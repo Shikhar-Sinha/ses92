@@ -18,8 +18,8 @@ class SesServer:
             connection, client_address = self.ses_socket.accept()
             data = connection.recv(65000)
             # Process with data here
-            m2rtu = call(["./m2rtu", str(data.encode("HEX"))])
-            rtu2m = call(["./rtu2m", str(data.encode("HEX"))])
+            m2rtu = call(["/home/ses92/m2rtu", str(data.encode("HEX"))])
+            rtu2m = call(["/home/ses92/rtu2m", str(data.encode("HEX"))])
             if m2rtu=="boo" and rtu2m=="boo":
                 connection.sendall('False')
             else:

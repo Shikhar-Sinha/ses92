@@ -27,9 +27,12 @@ RUN cd /home/hammer \
  && scons install \
  && ldconfig
 
-COPY Makefile m2rtu.c rtu2m.c /home/ses92/
+COPY Makefile m2rtu.c rtu2m.c serv.py /home/ses92/
 
 RUN cd /home/ses92 \ 
  && make
 
+EXPOSE 9003
+
+ENTRYPOINT python /home/ses92/serv.py
 #ENV LD_LIBRARY_PATH=/usr/local/lib
